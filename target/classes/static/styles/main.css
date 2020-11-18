@@ -1,0 +1,49 @@
+@charset "ISO-8859-1";
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+}
+.bg-primary{
+    background-color: #bd5d38 !important;
+}
+.logo-pima{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 10px solid white;	
+}
+.logo-pima img{
+	max-width:100%;
+}
+.navbar-dark .navbar-brand {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.box-session{
+	padding:4% 0% 4% 0%;
+	text-align:right;
+}
+@media (min-width: 768px){
+	.navbar.fixed-left {
+	    right: auto;
+	    text-align: center;
+	}
+}
+@media (max-width: 767px){
+	.logo-pima{
+		border-radius:0;
+		border:0;
+	}
+	.logo-pima img{
+		display:none;
+	}
+	.logo-pima:before{
+		content:"PIMA";
+		display:inline-block;
+		color:white;
+		font-weight:bold;
+		font-size:24px;
+    	font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";		
+	}
+}

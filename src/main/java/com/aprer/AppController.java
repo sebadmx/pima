@@ -14,23 +14,23 @@ public class AppController {
 	private SalesDAO dao2;
 	
 	@Autowired
-	private ProfesionalesDAO dao;	
+	private ProfesionalesDAO daoListProfesionales;	
 	
-	@RequestMapping("/profesional")
+	@RequestMapping("/")
 	public String viewHomePage2(Model model) {
 		
 		List<Sale> listSale = dao2.list();
 		model.addAttribute("listSale",listSale);
-		return "index2";
+		return "index";
 		
 	}	
 	
-	@RequestMapping("/")
-	public String viewHomePage(Model model) {
+	@RequestMapping("/profesional")
+	public String viewListProfesional(Model model) {
 		
-		List<Profesional> listProfesional = dao.list();
+		List<Profesional> listProfesional = daoListProfesionales.list();
 		model.addAttribute("listProfesional",listProfesional);
-		return "index";
+		return "listaprofesionales";
 		
 	}
 	
