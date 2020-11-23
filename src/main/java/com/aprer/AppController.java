@@ -34,5 +34,13 @@ public class AppController {
 		
 	}
 	
+	@RequestMapping("/nuevoprofesional")
+	public String showNewFormProfesional(Model model) {
+	    Profesional profesional = new Profesional();
+	    model.addAttribute("profesional", profesional);
+	      
+	    return "nuevoprofesional";
+	}	
+	
 	
 }
