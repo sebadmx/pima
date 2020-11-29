@@ -2,6 +2,8 @@ package com.aprer;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Profesional {
 	
 	private int idprofesional;
@@ -9,8 +11,8 @@ public class Profesional {
 	private String appaterno;
 	private String apmaterno;
 	private int rut;
-	private char dv;
-	private Date fechanacimiento;
+	private String dv;
+	private String fechanacimiento;
 	private String profesion;
 	private String direccion;
 	private String telefono;
@@ -22,7 +24,7 @@ public class Profesional {
 
 	}	
 	
-	public Profesional(String nombre, String appaterno, String apmaterno, int rut, char dv, Date fechanacimiento,
+	public Profesional(String nombre, String appaterno, String apmaterno, int rut, String dv, String fechanacimiento,
 			String profesion, String direccion, String telefono, String email, String cargo) {
 
 		this.nombre = nombre;
@@ -81,19 +83,19 @@ public class Profesional {
 		this.rut = rut;
 	}
 
-	public char getDv() {
+	public String getDv() {
 		return dv;
 	}
 
-	public void setDv(char dv) {
+	public void setDv(String dv) {
 		this.dv = dv;
 	}
 
-	public Date getFechanacimiento() {
+	public String getFechanacimiento() {
 		return fechanacimiento;
 	}
 
-	public void setFechanacimiento(Date fechanacimiento) {
+	public void setFechanacimiento(String fechanacimiento) {
 		this.fechanacimiento = fechanacimiento;
 	}
 

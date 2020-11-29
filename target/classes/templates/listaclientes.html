@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Todos los Clientes - PIMA</title>
+</head>
+<body>
+
+<div th:insert="header-admin.html :: header-admin"> </div>
+<div class="container">
+	<div class="box-session">
+		<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+	</div>
+	<h1>Clientes registro</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Nombre Cliente</th>
+				<th>Apellido Paterno</th>
+				<th>Apellido Materno</th>
+				<th>Rut</th>
+				<th>DV</th>
+				<th>Dirección</th>
+				<th>Telefono</th>
+				<th>Email</th>
+				<th>Rubro</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cliente : ${listCliente}">
+				<td th:text="${cliente.nombre}">Nombre</td>
+				<td th:text="${cliente.appaterno}">Apellido Paterno</td>
+				<td th:text="${cliente.apmaterno}">Apellido Materno</td>
+				<td th:text="${cliente.rut}">RUT</td>
+				<td th:text="${cliente.dv}">DV</td>
+				<td th:text="${cliente.direccion}">Direccion</td>
+				<td th:text="${cliente.telefono}">Telefono</td>
+				<td th:text="${cliente.email}">Email</td>
+				<td th:text="${cliente.rubro_idrubro}">Rubro</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>

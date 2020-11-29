@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Todos los profesionales - PIMA</title>
+</head>
+<body>
+
+<div th:insert="header-admin.html :: header-admin"> </div>
+
+<div class="container">
+	<div class="box-session">
+		<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+	</div>
+	<!-- Guardado- -->
+	<div class="alert alert-warning alert-dismissible fade ok-guardado show" role="alert" style="display:none;">
+	  <strong>Guardado</strong> Tu registro se guardó correctamente.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>	
+	<!-- Eliminado- -->
+	<div class="alert alert-warning alert-dismissible fade ok-eliminado show" role="alert" style="display:none;">
+	  <strong>Eliminado</strong> Tu registro se eliminó correctamente.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>		
+	
+	
+	<h1>Profesionales Edición</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre profesional</th>
+				<th>Apellido Paterno</th>
+				<th>Apellido Materno</th>
+				<th>Rut</th>
+				<th>DV</th>
+				<th>fecha nacimiento</th>
+				<th>Profesion</th>
+				<th>Dirección</th>
+				<th>Telefono</th>
+				<th>Email</th>
+				<th>Cargo</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="profesional : ${listProfesional}">
+				<td th:text="${profesional.idprofesional}">ID</td>
+				<td th:text="${profesional.nombre}">Nombre</td>
+				<td th:text="${profesional.appaterno}">Apellido Paterno</td>
+				<td th:text="${profesional.apmaterno}">Apellido Materno</td>
+				<td th:text="${profesional.rut}">RUT</td>
+				<td th:text="${profesional.dv}">DV</td>
+				<td th:text="${profesional.fechanacimiento}">Fecha nacimiento</td>
+				<td th:text="${profesional.profesion}">Profesion</td>
+				<td th:text="${profesional.direccion}">Direccion</td>
+				<td th:text="${profesional.telefono}">Telefono</td>
+				<td th:text="${profesional.email}">Email</td>
+				<td th:text="${profesional.cargo}">cargo</td>
+				<td>
+					<div class="row">
+						<div class="col">
+							<a th:href="@{/editarprofesional/{id}(id=${profesional.idprofesional})}" class="btn btn-outline-primary btn-sm">Editar</a>
+
+						</div>
+						<div class="col">
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" th:data-target="'#exampleModal' + ${profesional.idprofesional}">Eliminar</button>
+							<!-- Modal -->
+							<div class="modal fade" th:id="'exampleModal' + ${profesional.idprofesional}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Eliminación</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							        <p>¿Desea eliminar definitivamente este contenido?</p>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+							        <a th:href="@{/eliminarprofesional/{id}(id=${profesional.idprofesional})}" class="btn btn-danger">Eliminar definitivamente</a>
+							      </div>
+							    </div>
+							  </div>
+							</div>							
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>

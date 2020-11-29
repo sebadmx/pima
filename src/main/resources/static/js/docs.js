@@ -71,3 +71,40 @@ function fixBodyMargin(className) {
 function selectTheme(theme) {
     $('#theme_link').attr('href', 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/' + theme + '/bootstrap.min.css');
 }
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  
+$(document).ready(function() {  
+	var urlFail = window.location.search;
+	var urlOrigen = window.location.origin;
+	var urlPathname = window.location.pathname;
+	var nameFail='?ok';
+	var nameDelete='?eliminado';
+	
+	if(urlFail.indexOf(nameFail) != -1){
+		$('.ok-guardado').css('display','block');
+	}
+	if(urlFail.indexOf(nameDelete) != -1){
+		$('.ok-eliminado').css('display','block');
+	}	
+});

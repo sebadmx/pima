@@ -10,7 +10,7 @@
 			<button type="button" class="btn btn-primary">Cerrar Sesión</button>
 		</div>
 		<h1>Complete datos de Profesional</h1>
-        <form action="#" th:action="@{/saveprofesional}" th:object="${profesional}" method="post" class="form needs-validation" novalidate>
+        <form action="#" th:action="@{/updateprofesional}" th:object="${profesional}" method="post" class="form needs-validation" novalidate>
 				<div class="form-group">
 				  <label for="validationCustom01">Nombre:</label>
 				  <input type="text" th:field="*{nombre}" class="form-control" id="validationCustom01" placeholder="Ingrese nombre" required>
@@ -36,12 +36,12 @@
 					<div class="row">
 						<div class="col-8">
 							<label for="validationCustom04">RUT:</label>
-							<input type="text" th:field="*{rut}" class="form-control" id="validationCustom04" placeholder="Ingrese RUT" required>
+							<input type="text" th:field="*{rut}" class="form-control" id="validationCustom04" placeholder="Ingrese RUT" disabled>
 							<div class="invalid-feedback">Debe agregar su RUT</div>					
 						</div>
 						<div class="col-4">
 							<label for="validationCustom05">DV:</label>
-							<input type="text" th:field="*{dv}" id="validationCustom05" class="form-control" placeholder="Ingrese DV (D&iacute;gito verificador" maxlength="1" required>
+							<input type="text" th:field="*{dv}" id="validationCustom05" class="form-control" placeholder="Ingrese DV (D&iacute;gito verificador" maxlength="1" disabled>
 							<div class="invalid-feedback">Debe agregar su digito verificador</div>					
 						</div>
 					</div>

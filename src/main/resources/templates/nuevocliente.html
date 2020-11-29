@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="head.html :: head">
-	<title>Nuevo Profesional - PIMA</title>
+	<title>Nuevo Cliente - PIMA</title>
 </head>
 <body>
 <div th:insert="header-admin.html :: header-admin"></div>
@@ -9,8 +9,8 @@
 		<div class="box-session">
 			<button type="button" class="btn btn-primary">Cerrar Sesión</button>
 		</div>
-		<h1>Complete datos de Profesional</h1>
-        <form action="#" th:action="@{/saveprofesional}" th:object="${profesional}" method="post" class="form needs-validation" novalidate>
+		<h1>Complete datos de Cliente</h1>
+        <form action="#" th:action="@{/savecliente}" th:object="${cliente}" method="post" class="form needs-validation" novalidate>
 				<div class="form-group">
 				  <label for="validationCustom01">Nombre:</label>
 				  <input type="text" th:field="*{nombre}" class="form-control" id="validationCustom01" placeholder="Ingrese nombre" required>
@@ -46,21 +46,7 @@
 						</div>
 					</div>
 				</div> 
-				<div class="form-group">
-						<div class="row">
-							<div class="col">
-								<label for="validationCustom06">Fecha Nacimiento:</label>
-								<input type="text" th:field="*{fechanacimiento}" class="form-control" id="datepicker" placeholder="Indique su fecha de nacimiento" autocomplete="off" required>		
-								<div class="invalid-feedback">Debe agregar su fecha de nacimiento</div>					
-							</div>
-							<div class="col">
-								<label for="validationCustom07">Profesi&oacute;n:</label>
-								<input type="text" th:field="*{profesion}"  class="form-control" id="validationCustom07" placeholder="Indique Profesion" required>	
-								<div class="invalid-feedback">Debe agregar su profesion</div>										
-							</div>
-						</div>
-			
-				</div>
+
 				<div class="form-group">
 					<div class="row">
 						<div class="col">
@@ -83,8 +69,19 @@
 							<div class="invalid-feedback">Debe agregar su correo</div>		
 						</div>
 						<div class="col">
-							<label for="exampleFormControlInput1">Cargo:</label>
-							<input type="text" th:field="*{cargo}" class="form-control" placeholder="Indique Cargo" />
+							<label for="validationCustom11">Rubro:</label>
+							<input type="hidden" th:field="*{rubro_idrubro}" class="form-control" id="rubroid">
+							<select class="form-control" id="selectrubro" required>
+								<option th:each="rubro : ${listRubro}" th:value="${rubro.idrubro}" th:text="${rubro.descripcionrubro}"></option>
+							</select>
+							<script>
+								$(document).ready(function() {
+									$('#selectrubro').change(function(){
+										var selRubro = $(this).children('option:selected').attr('value');
+										$('#rubroid').attr('value',selRubro);
+									});
+								});
+							</script>
 						</div>
 					</div>
 				</div>	
