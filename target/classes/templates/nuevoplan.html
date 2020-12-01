@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Reporte de accidente - PIMA</title>
+
+</head>
+<body>
+<div th:insert="header-admin.html :: header-admin"></div>
+<div class="container">
+		<div class="box-session">
+			<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+		</div>
+		<h1>Ingrese datos Plan</h1>
+        <form action="#" th:action="@{/saveplan}" th:object="${plan}" method="post" class="form needs-validation" novalidate>
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label for="validationCustom07">Nombre Plan:</label>
+							<input type="text" th:field="*{descripcion}"  class="form-control" id="validationCustom07" placeholder="Indique nombre plan" autocomplete="off"required>	
+							<div class="invalid-feedback">Este campo es obligatorio</div>										
+						</div>
+						<div class="col">
+							<label for="validationCustom08">Valor:</label>
+							<input type="text" th:field="*{valortotal}"  class="form-control" id="validationCustom08" placeholder="Describa el incidente" autocomplete="off" required>
+							<div class="invalid-feedback">Este campo es obligatorio</div>										
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>											
+        </form>
+</div>
+</body>
+</html>

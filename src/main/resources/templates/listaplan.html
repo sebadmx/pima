@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Todos los planes - PIMA</title>
+</head>
+<body>
+
+<div th:insert="header-admin.html :: header-admin"> </div>
+<div class="container">
+	<div class="box-session">
+		<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+	</div>
+	<h1>Planes registro</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID Plan</th>
+				<th>Nombre plan</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="plan : ${listPlan}">
+				<td th:text="${plan.idplan}">Nombre</td>
+				<td th:text="${plan.descripcion}">Apellido Paterno</td>
+				<td th:text="${plan.valortotal}">Apellido Materno</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>

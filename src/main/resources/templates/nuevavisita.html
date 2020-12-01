@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Nuevo Cliente - PIMA</title>
+
+</head>
+<body>
+<div th:insert="header-admin.html :: header-admin"></div>
+<div class="container">
+		<div class="box-session">
+			<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+		</div>
+		<h1>Complete datos de Visita</h1>
+        <form action="#" th:action="@{/savevisita}" th:object="${visitas}" method="post" class="form needs-validation" novalidate>
+				<div class="form-group">
+						<div class="row">
+							<div class="col">
+								<label for="validationCustom07">Fecha visitas:</label>
+								<input type="text" th:field="*{fechavisita}"  class="form-control" id="datepicker" placeholder="Indique fecha" autocomplete="off"required>	
+								<div class="invalid-feedback">Este campo es obligatorio</div>										
+							</div>
+							<div class="col">
+								<label for="validationCustom07">Detalle:</label>
+								<input type="text" th:field="*{detalle}"  class="form-control" id="validationCustom07" placeholder="Indique algun detalle" autocomplete="off"required>	
+								<div class="invalid-feedback">Este campo es obligatorio</div>										
+							</div>
+						</div>
+				</div>
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label for="validationCustom10">Seleccione Cliente:</label>
+							<input type="hidden" th:field="*{cliente_idcliente}" class="form-control" id="clienteid" placeholder="Indique Cliente">
+							<select class="form-control" id="selectcliente" required>
+								<option value="0" selected>Seleccione una opción</option>
+								<option th:each="cliente : ${listCliente}" th:value="${cliente.idcliente}" th:text="${cliente.nombre}"></option>
+							</select>	
+							<script>
+								$(document).ready(function() {
+									$('#selectcliente').change(function(){
+										var selCliente = $(this).children('option:selected').attr('value');
+										$('#clienteid').attr('value',selCliente);
+									});
+								});
+							</script>													
+							<div class="invalid-feedback">Este campo es obligatorio</div>		
+						</div>
+						<div class="col">
+							<label for="validationCustom11">Seleccione Profesional:</label>
+							<input type="hidden" th:field="*{profesional_idprofesional}" class="form-control" id="profesionalid">
+							<select class="form-control" id="selectprofesional" required>
+								<option value="0" selected>Seleccione una opción</option>
+								<option th:each="profesional : ${listProfesional}" th:value="${profesional.idprofesional}" th:text="${profesional.nombre}"></option>
+							</select>
+							<script>
+								$(document).ready(function() {
+									$('#selectprofesional').change(function(){
+										var selProfesional = $(this).children('option:selected').attr('value');
+										$('#profesionalid').attr('value',selProfesional);
+									});
+								});
+							</script>
+						</div>
+					</div>
+				</div>	
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label for="validationCustom10">Direccion:</label>
+							<input type="hidden" th:field="*{coordenadas}" class="form-control" id="coordenadas" placeholder="Indique Correo" required>
+							<div class="invalid-feedback">Indique direccion</div>
+							<div id="mapbox"></div>	
+							
+							<script type="text/javascript">
+							    mapboxgl.accessToken = 'pk.eyJ1Ijoic2ViYXNjbCIsImEiOiJja2M0MmoyejAwMmczMnFtZ2NkYWgxdGo2In0.GgyxGsII1sNd4bzy-GmiEw';
+							      var map = new mapboxgl.Map({
+							        container: 'mapbox',
+							        style: 'mapbox://styles/mapbox/streets-v11',
+							        center: [-70.6506,-33.4372],
+							        zoom: 10
+							      });
+							
+							      var geocoder = new MapboxGeocoder({
+							        accessToken: mapboxgl.accessToken,
+							        mapboxgl: mapboxgl    
+							      });
+							
+							      map.addControl(geocoder, 'top-left');
+							
+							      map.on('load', function() {
+							        // Listen for the `geocoder.input` event that is triggered when a user
+							        // makes a selection
+							        geocoder.on('result', function(ev) {
+							            var styleSpec = ev.result;
+							            var styleSpec2 = ev.result.geometry.coordinates;
+							            var styleSpec3 = ev.result.place_name;
+							            console.log(styleSpec2);
+							            document.getElementById("coordenadas").value = styleSpec2;
+							            document.getElementById("direccion").value = styleSpec3;
+							        });
+							      });
+							</script>							
+
+							
+						</div>
+					</div>
+				</div>	
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>											
+        </form>
+</div>
+</body>
+</html>

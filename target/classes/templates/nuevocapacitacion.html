@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Registre una capacitacion - PIMA</title>
+</head>
+<body>
+<div th:insert="header-admin.html :: header-admin"></div>
+<div class="container">
+		<div class="box-session">
+			<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+		</div>
+		<h1>Complete datos de Capacitacion</h1>
+        <form action="#" th:action="@{/savecapacitacion}" th:object="${capacitacion}" method="post" class="form needs-validation" novalidate>
+
+				<div class="form-group">
+						<div class="row">
+							<div class="col">
+								<label for="validationCustom06">Ingrese la fecha de capacitacion:</label>
+								<input type="text" th:field="*{fechacapacitacion}" class="form-control" id="datepicker" placeholder="Indique fecha de capacitacion" autocomplete="off" required>		
+								<div class="invalid-feedback">Este campo es obligatorio</div>					
+							</div>
+							<!--  >div class="col">
+								<label for="validationCustom07">Observaciones:</label>
+								<input type="text" th:field="*{observacion}"  class="form-control" id="validationCustom07" placeholder="Indique Profesion" autocomplete="off"required>	
+								<div class="invalid-feedback">Debe agregar su profesion</div>										
+							</div-->
+						</div>
+				</div>
+
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col">
+							<label for="validationCustom10">Seleccione Cliente:</label>
+							<input type="hidden" th:field="*{cliente_idcliente}" class="form-control" id="clienteid" placeholder="Indique Cliente">
+							<select class="form-control" id="selectcliente" required>
+								<option value="0" selected>Seleccione una opción</option>
+								<option th:each="cliente : ${listCliente}" th:value="${cliente.idcliente}" th:text="${cliente.nombre}"></option>
+							</select>	
+							<script>
+								$(document).ready(function() {
+									$('#selectcliente').change(function(){
+										var selCliente = $(this).children('option:selected').attr('value');
+										$('#clienteid').attr('value',selCliente);
+									});
+								});
+							</script>													
+							<div class="invalid-feedback">Debe agregar su correo</div>		
+						</div>
+						<div class="col">
+							<label for="validationCustom11">Seleccione Profesional:</label>
+							<input type="hidden" th:field="*{profesional_idprofesional}" class="form-control" id="profesionalid">
+							<select class="form-control" id="selectprofesional" required>
+								<option th:each="profesional : ${listProfesional}" th:value="${profesional.idprofesional}" th:text="${profesional.nombre}"></option>
+							</select>
+							<script>
+								$(document).ready(function() {
+									$('#selectprofesional').change(function(){
+										var selProfesional = $(this).children('option:selected').attr('value');
+										$('#profesionalid').attr('value',selProfesional);
+									});
+								});
+							</script>
+						</div>
+					</div>
+				</div>	
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>											
+        </form>
+</div>
+</body>
+</html>

@@ -72,6 +72,7 @@
 							<label for="validationCustom11">Rubro:</label>
 							<input type="hidden" th:field="*{rubro_idrubro}" class="form-control" id="rubroid">
 							<select class="form-control" id="selectrubro" required>
+								<option value="0" selected>Seleccione una opción</option>
 								<option th:each="rubro : ${listRubro}" th:value="${rubro.idrubro}" th:text="${rubro.descripcionrubro}"></option>
 							</select>
 							<script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="head.html :: head">
+	<title>Todos los Clientes - PIMA</title>
+</head>
+<body>
+
+<div th:insert="header-admin.html :: header-admin"> </div>
+
+<div class="container">
+	<div class="box-session">
+		<button type="button" class="btn btn-primary">Cerrar Sesión</button>
+	</div>
+	<!-- Guardado- -->
+	<div class="alert alert-warning alert-dismissible fade ok-guardado show" role="alert" style="display:none;">
+	  <strong>Guardado</strong> Tu registro se guardó correctamente.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>	
+	<!-- Eliminado- -->
+	<div class="alert alert-warning alert-dismissible fade ok-eliminado show" role="alert" style="display:none;">
+	  <strong>Eliminado</strong> Tu registro se eliminó correctamente.
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>		
+	
+	<h1>Accidentes Vista</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Fecha Incidente</th>
+				<th>Detalle</th>
+				<th>Cliente</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="accidente : ${listAccidente}">
+				<td th:text="${accidente.idaccidente}">ID</td>
+				<td th:text="${accidente.fechaacidente}">fecha</td>
+				<td th:text="${accidente.descripcion}">fecha</td>
+				<td th:text="${accidente.cliente_idcliente}">Detalle</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+</body>
+</html>

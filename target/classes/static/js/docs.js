@@ -100,6 +100,7 @@ $(document).ready(function() {
 	var urlPathname = window.location.pathname;
 	var nameFail='?ok';
 	var nameDelete='?eliminado';
+	var nameAccidente='?incidente';
 	
 	if(urlFail.indexOf(nameFail) != -1){
 		$('.ok-guardado').css('display','block');
@@ -107,4 +108,11 @@ $(document).ready(function() {
 	if(urlFail.indexOf(nameDelete) != -1){
 		$('.ok-eliminado').css('display','block');
 	}	
+	if(urlFail.indexOf(nameAccidente) != -1){
+		$('.ok-eliminado').css('display','block');
+	}		
+	
 });
+
+
+

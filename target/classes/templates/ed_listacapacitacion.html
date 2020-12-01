@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="head.html :: head">
-	<title>Todos los Clientes - PIMA</title>
+	<title>Todos los profesionales - PIMA</title>
 </head>
 <body>
 
@@ -27,42 +27,31 @@
 	</div>		
 	
 	
-	<h1>Clientes Edición</h1>
+	<h1>Capacitaciones Edición</h1>
 	<table class="table">
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Nombre Cliente</th>
-				<th>Apellido Paterno</th>
-				<th>Apellido Materno</th>
-				<th>Rut</th>
-				<th>DV</th>
-				<th>Dirección</th>
-				<th>Telefono</th>
-				<th>Email</th>
-				<th>Cargo</th>
+				<th>Fecha capacitacion</th>
+				<th>Observacion</th>
+				<th>Cliente</th>
+				<th>Profesional</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="cliente : ${listCliente}">
-				<td th:text="${cliente.idcliente}">ID</td>
-				<td th:text="${cliente.nombre}">Nombre</td>
-				<td th:text="${cliente.appaterno}">Apellido Paterno</td>
-				<td th:text="${cliente.apmaterno}">Apellido Materno</td>
-				<td th:text="${cliente.rut}">RUT</td>
-				<td th:text="${cliente.dv}">DV</td>
-				<td th:text="${cliente.direccion}">Direccion</td>
-				<td th:text="${cliente.telefono}">Telefono</td>
-				<td th:text="${cliente.email}">Email</td>
-				<td th:text="${cliente.rubro_idrubro}">Rubro</td>
+			<tr th:each="capacitacion : ${listCapacitacion}">
+				<td th:text="${capacitacion.idcapacitacion}">ID</td>
+				<td th:text="${capacitacion.fechacapacitacion}">fecha</td>
+				<td th:text="${capacitacion.observacion}">Observacion</td>
+				<td th:text="${capacitacion.cliente_idcliente}">Cliente</td>
+				<td th:text="${capacitacion.profesional_idprofesional}">Profesional</td>
 				<td>
 					<div class="row">
-
 						<div class="col">
-							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" th:data-target="'#exampleModal' + ${cliente.idcliente}">Eliminar</button>
+							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" th:data-target="'#exampleModal' + ${capacitacion.idcapacitacion}">Eliminar</button>
 							<!-- Modal -->
-							<div class="modal fade" th:id="'exampleModal' + ${cliente.idcliente}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							<div class="modal fade" th:id="'exampleModal' + ${capacitacion.idcapacitacion}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							  <div class="modal-dialog" role="document">
 							    <div class="modal-content">
 							      <div class="modal-header">
@@ -76,7 +65,7 @@
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-							        <a th:href="@{/eliminarcliente/{id}(id=${cliente.idcliente})}" class="btn btn-danger">Eliminar definitivamente</a>
+							        <a th:href="@{/eliminarcapacitacion/{id}(id=${capacitacion.idcapacitacion})}" class="btn btn-danger">Eliminar definitivamente</a>
 							      </div>
 							    </div>
 							  </div>

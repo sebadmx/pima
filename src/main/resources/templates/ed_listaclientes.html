@@ -58,10 +58,7 @@
 				<td th:text="${cliente.rubro_idrubro}">Rubro</td>
 				<td>
 					<div class="row">
-						<div class="col">
-							<a th:href="@{/editarcliente/{id}(id=${cliente.idcliente})}" class="btn btn-outline-primary btn-sm">Editar</a>
 
-						</div>
 						<div class="col">
 							<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" th:data-target="'#exampleModal' + ${cliente.idcliente}">Eliminar</button>
 							<!-- Modal -->
